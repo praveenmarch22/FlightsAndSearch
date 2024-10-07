@@ -12,6 +12,27 @@ class CityRepository {
     }
   }
 
+  async getCity({ cityId }) {
+    try {
+      const res = await City.findByPk(cityId);
+      return res;
+    } catch (error) {
+      throw { error };
+    }
+  }
+
+  async updateCity(cityId, data) {
+    try {
+      const res = await City.update(data, {
+        where: {
+          id: cityId,
+        },
+      });
+    } catch (error) {
+      throw { error };
+    }
+  }
+
   async deleteCity(cityId) {
     try {
       const res = await City.destroy({
