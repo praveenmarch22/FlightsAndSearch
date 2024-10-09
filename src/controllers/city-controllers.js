@@ -1,0 +1,81 @@
+const { CityService } = require("../services/index");
+
+const cityService = new CityService();
+
+const createCity = async (req, res) => {
+  try {
+    const city = await cityService.createCity(req.body);
+    return res.status(201).json({
+      success: true,
+      data: city,
+      message: "City is added successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: error,
+      message: "Failed to add city data",
+    });
+  }
+};
+
+const deleteCity = async (req, res) => {
+  try {
+    const res = await cityService.deleteCity(req.params.id);
+    return res.status(200).json({
+      success: true,
+      data: res,
+      message: "City is deleted successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      data: {},
+      message: "Failed to delete the city data",
+    });
+  }
+};
+
+const getCity = async (req, res) => {
+  try {
+    const res = await cityService.getCity(req.params.id);
+    return res.status(200).json({
+      success: true,
+      data: res,
+      message: "City data is fetched successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      data: {},
+      message: "Failed to get the city data",
+    });
+  }
+};
+
+const updateCity = async (req, res) => {
+  try {
+    const res = await cityService.updateCity(req.params.id, req.body);
+    return res.status(200).json({
+      success: true,
+      data: res,
+      message: "City data is updated successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      data: {},
+      message: "Failed to get the city data",
+    });
+  }
+};
+
+module.exports = {
+  createCity,
+  deleteCity,
+  getCity,
+  updateCity,
+};

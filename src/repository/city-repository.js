@@ -4,11 +4,11 @@ const { City } = require("../models");
 class CityRepository {
   async createCity({ name }) {
     try {
-      const res = await City.create({
-        name: name,
-      });
+      const city = await City.create({ name });
+      return city;
     } catch (error) {
-      throw { error };
+      console.log("Error creating city:", error);
+      throw error;
     }
   }
 

@@ -16,7 +16,7 @@ class CityService {
 
   async createCity({ name }) {
     try {
-      const res = await this.cityRepository.createCity(name);
+      const res = await this.cityRepository.createCity({ name });
       return res;
     } catch (error) {
       throw { error };
@@ -41,3 +41,5 @@ class CityService {
     }
   }
 }
+
+module.exports = CityService;
