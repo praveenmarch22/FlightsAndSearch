@@ -9,5 +9,8 @@ const {
 const router = express.Router();
 
 router.post("/city", createCity);
+router.delete("/city/:id", deleteCity);
+router.get("/city/:id", getCity);
+router.patch("/city/:id", updateCity);
 
 module.exports = router;

@@ -12,7 +12,7 @@ class CityRepository {
     }
   }
 
-  async getCity({ cityId }) {
+  async getCity(cityId) {
     try {
       const res = await City.findByPk(cityId);
       return res;
@@ -23,23 +23,29 @@ class CityRepository {
 
   async updateCity(cityId, data) {
     try {
-      const res = await City.update(data, {
-        where: {
-          id: cityId,
-        },
-      });
+      //   const res = await City.update(data, {
+      //     where: {
+      //       id: cityId,
+      //     },
+      //   });
+      const city = await City.findByPk(cityId);
+      city.name = data.name;
+      const res = await City.save();
+      return res;
     } catch (error) {
       throw { error };
     }
   }
 
   async deleteCity(cityId) {
+    console.log("got the data in repository");
     try {
       const res = await City.destroy({
         where: {
           id: cityId,
         },
       });
+      return res;
     } catch (error) {
       throw { error };
     }

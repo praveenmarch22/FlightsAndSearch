@@ -24,6 +24,7 @@ class CityService {
   }
 
   async deleteCity(cityId) {
+    console.log("got the data");
     try {
       const res = await this.cityRepository.deleteCity(cityId);
       return res;

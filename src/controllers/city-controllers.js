@@ -21,10 +21,10 @@ const createCity = async (req, res) => {
 
 const deleteCity = async (req, res) => {
   try {
-    const res = await cityService.deleteCity(req.params.id);
+    const response = await cityService.deleteCity(req.params.id);
     return res.status(200).json({
       success: true,
-      data: res,
+      data: response,
       message: "City is deleted successfully",
     });
   } catch (error) {
@@ -39,10 +39,10 @@ const deleteCity = async (req, res) => {
 
 const getCity = async (req, res) => {
   try {
-    const res = await cityService.getCity(req.params.id);
+    const response = await cityService.getCity(req.params.id);
     return res.status(200).json({
       success: true,
-      data: res,
+      data: response,
       message: "City data is fetched successfully",
     });
   } catch (error) {
@@ -57,10 +57,11 @@ const getCity = async (req, res) => {
 
 const updateCity = async (req, res) => {
   try {
-    const res = await cityService.updateCity(req.params.id, req.body);
+    console.log(req.params.id, "-----", req.body);
+    const response = await cityService.updateCity(req.params.id, req.body);
     return res.status(200).json({
       success: true,
-      data: res,
+      data: response,
       message: "City data is updated successfully",
     });
   } catch (error) {
