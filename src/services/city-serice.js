@@ -42,9 +42,9 @@ class CityService {
     }
   }
 
-  async getAllCities() {
+  async getAllCities({ filter }) {
     try {
-      const res = await this.cityRepository.getAllCities();
+      const res = await this.cityRepository.getAllCities(filter);
       return res;
     } catch (error) {
       throw { error };
